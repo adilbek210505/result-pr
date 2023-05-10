@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useAppDispatch, useAppSelector} from "../../Hooks";
 import {decQuantityREC, deleteOrderREC} from "../../Store/Reducers/ActionCreators/OrderCreators";
 import {addToOrders} from "../../Store/Reducers/OrdersSlice";
 
 const Order = () => {
-    const [v,setV] = useState("")
     const {order} = useAppSelector(s => s.OrdersReducer)
     const dispatch = useAppDispatch()
     const fount = order.reduce((acc,el) => {
@@ -55,7 +54,7 @@ const Order = () => {
                                             </svg>
                                         </button>
                                         <div>
-                                            <input value={el.quantity} onChange={(e) => setV(e.target.value)} type="number" id="first_product" className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={el.quantity} required/>
+                                            <input value={el.quantity} type="text" id="first_product" className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={el.quantity} required/>
                                         </div>
                                         <button onClick={() => dispatch(addToOrders(el))} className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                             <span className="sr-only">Quantity button</span>
